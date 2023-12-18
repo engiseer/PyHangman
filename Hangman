@@ -1,0 +1,112 @@
+import random as random_mod
+
+print("Welcome to\n")
+print(''' _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/        ''')
+print('''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========\n\n''')
+
+# can add a word pool to randomly select a word when starting the game
+#wordbank = [word, word, word, word, word]
+wordbank = ("ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt otter owl panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep skunk sloth snake spider stork swan tiger toad trout turkey turtle weasel whale wolf ombat zebra").split()
+
+word = random_mod.choice(wordbank)
+
+
+secret_word = list(word.lower())
+empty_guess_word = ""
+guess_word = []
+for x in range(len(word)):
+  empty_guess_word += "_"
+  guess_word = list(empty_guess_word)
+
+
+
+wrongcount = 0
+while guess_word != secret_word and wrongcount != 6:
+  g = input("Guess a letter:\n")
+  for index, letter in enumerate(secret_word):
+    if g.lower() == letter: 
+      guess_word[index] = secret_word[index]
+      print("Correct!")
+      print(guess_word)
+      
+  if g.lower() not in secret_word:
+      print("Wrong! Try again!")
+      wrongcount += 1  
+      if wrongcount == 1:
+        print('''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''')
+      elif wrongcount == 2:
+        print('''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''')
+      elif wrongcount == 3:
+        print('''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''')
+      elif wrongcount == 4:
+        print('''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''')
+      elif wrongcount == 5:
+        print('''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''')
+      elif wrongcount == 6:
+        print("You Lose")
+        print('''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''')
+if guess_word == secret_word:
+  print("You Win!")
+  print(f"The word is {word}")
+    
+      
+  
+      
+      
+  
